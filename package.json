@@ -1,0 +1,78 @@
+{
+  "name": "worktree-manager",
+  "version": "0.1.0",
+  "description": "A control plane for git worktrees - manage, view, and intervene across parallel worktrees",
+  "main": "dist/main/main/index.js",
+  "author": "William Goodwin",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "SDKROOT=$(xcrun --show-sdk-path) CPLUS_INCLUDE_PATH=$(xcrun --show-sdk-path)/usr/include/c++/v1 npx @electron/rebuild || true",
+    "rebuild": "SDKROOT=$(xcrun --show-sdk-path) CPLUS_INCLUDE_PATH=$(xcrun --show-sdk-path)/usr/include/c++/v1 npx @electron/rebuild",
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsc -p tsconfig.main.json --watch",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "start": "electron .",
+    "package": "npm run build && electron-builder",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "allotment": "^1.20.5",
+    "better-sqlite3": "^11.7.0",
+    "chokidar": "^4.0.3",
+    "fast-glob": "^3.3.3",
+    "fuse.js": "^7.1.0",
+    "node-cron": "^3.0.3",
+    "node-pty": "^1.1.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lang-markdown": "^6.3.2",
+    "@codemirror/lang-python": "^6.1.6",
+    "@codemirror/lang-rust": "^6.0.1",
+    "@codemirror/state": "^6.5.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@electron/rebuild": "^3.7.2",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.13.1",
+    "@types/node-cron": "^3.0.11",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@types/react-window": "^1.8.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
+    "codemirror": "^6.0.1",
+    "concurrently": "^9.1.2",
+    "electron": "^34.0.2",
+    "electron-builder": "^25.1.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-window": "^2.2.6",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5",
+    "zustand": "^5.0.3"
+  },
+  "build": {
+    "appId": "com.worktreemanager.app",
+    "productName": "WorktreeManager",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  }
+}

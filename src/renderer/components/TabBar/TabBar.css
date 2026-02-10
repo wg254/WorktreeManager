@@ -1,0 +1,132 @@
+.tab-bar {
+  display: flex;
+  background: #252526;
+  border-bottom: 1px solid #3c3c3c;
+  padding: 0 8px;
+  padding-top: 32px; /* Account for traffic lights */
+  -webkit-app-region: drag;
+  min-height: 68px;
+  align-items: flex-end;
+}
+
+.tab-bar-scroll {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  padding-bottom: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.tab-bar-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tab-bar-scroll::-webkit-scrollbar-thumb {
+  background: #5a5a5a;
+  border-radius: 2px;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #2d2d2d;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  color: #808080;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: background 0.15s, color 0.15s;
+  -webkit-app-region: no-drag;
+}
+
+.tab-item:hover {
+  background: #3c3c3c;
+  color: #cccccc;
+}
+
+.tab-item.active {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.tab-item.dirty .tab-title::after {
+  content: '';
+  display: none;
+}
+
+.tab-icon {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.tab-title {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-dirty-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f57c00;
+  flex-shrink: 0;
+}
+
+.tab-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  color: #808080;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.tab-item:hover .tab-close,
+.tab-item.active .tab-close {
+  opacity: 1;
+}
+
+.tab-close:hover {
+  background: #5a5a5a;
+  color: #ffffff;
+}
+
+.new-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px dashed #3c3c3c;
+  border-radius: 4px;
+  color: #808080;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-app-region: no-drag;
+}
+
+.new-tab-btn:hover {
+  background: #2d2d2d;
+  border-color: #808080;
+}

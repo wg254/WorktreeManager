@@ -1,0 +1,79 @@
+.quick-open-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  z-index: 100;
+}
+
+.quick-open-modal {
+  background: #252526;
+  border-radius: 8px;
+  width: 600px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.quick-open-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #1e1e1e;
+  border: none;
+  border-bottom: 1px solid #3c3c3c;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+}
+
+.quick-open-input::placeholder {
+  color: #808080;
+}
+
+.quick-open-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.quick-open-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+.quick-open-item:hover,
+.quick-open-item.selected {
+  background: #094771;
+}
+
+.quick-open-filename {
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+.quick-open-path {
+  font-size: 11px;
+  color: #808080;
+}
+
+.quick-open-item.selected .quick-open-path {
+  color: #a0a0a0;
+}
+
+.quick-open-loading,
+.quick-open-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: #808080;
+  font-size: 13px;
+}
